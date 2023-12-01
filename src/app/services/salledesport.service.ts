@@ -1,6 +1,7 @@
+import { salledesport } from 'src/app/model/salledesport.model';
 import { Injectable } from '@angular/core';
-import { salledesport } from '../model/salledesport.model';
 import { typee } from '../model/type.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class SalledesportService {
   this.types=[{idtyp : 1, nomtyp : "gym"},
   {idtyp : 2, nomtyp : "fitness"}];
   this.salledesport =[
-    {idsalledesport : 1, nomsalledesport : "go gym", capacitesalledesport : 50, dateCreation : new Date("01/14/2011"),typee:{idtyp : 1, nomtyp : "fitness"}},
+    {idsalledesport : 1, nomsalledesport : "go gym", capacitesalledesport : 50, dateCreation : new Date("01/14/2011"),typee:{idtyp : 1, nomtyp : "gym"}},
     {idsalledesport : 2, nomsalledesport : "4 ever gym", capacitesalledesport : 70, dateCreation : new Date("12/17/2010"),typee:{idtyp : 2, nomtyp : "fitness"}},
     {idsalledesport : 3, nomsalledesport:"fitness", capacitesalledesport : 60, dateCreation : new Date("02/20/2020"),typee:{idtyp : 1, nomtyp : "gym"}}
      ];}
@@ -65,7 +66,27 @@ export class SalledesportService {
     consultertype(id:number): typee{
         return this.types.find(cat => cat.idtyp == id)!;
       }
-          
+ 
+      rechercherParType(idtyp: number): salledesport[] {
+        console.log("Selected type ID (Type):", typeof idtyp); 
+        const filterevet = this.salledesport.filter(vet => {
+          return vet.typee.idtyp == idtyp;
+        });
+        console.log("Filtered Concerts:", filterevet);
+    
+        if (filterevet.length === 0) {
+          console.log("Aucun type trouvé");
+        }
+    
+        return filterevet;
+      }
+      rechercherParNom(nomsalledesport: String): salledesport[] {
+        const filterevet = this.salledesport.filter(vet => {
+          return vet.nomsalledesport.toLowerCase().includes(nomsalledesport.toLowerCase());
+        });
+        console.log("Filtered vetements:", filterevet);
+        return filterevet;
+      }        
         
         
 }

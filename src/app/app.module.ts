@@ -8,6 +8,9 @@ import { FormsModule } from '@angular/forms';
 import { UpdateSalledesportComponent } from './services/update-salledesport/update-salledesport.component';
 import { LoginComponent } from './login/login.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { RecherchePartypeComponent } from './recherche-partype/recherche-partype.component';
+import { RechercheParNomComponent } from './recherche-par-nom/recherche-par-nom.component';
+import { SearchFilterPipe } from './search-filter.pipe';
 
 
 @NgModule({
@@ -17,12 +20,17 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
     AddSalledesportComponent,
     UpdateSalledesportComponent,
     LoginComponent,
-    ForbiddenComponent
+    ForbiddenComponent,
+    RecherchePartypeComponent,
+    RechercheParNomComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
+    
+      
   ],
   providers: [],
   bootstrap: [AppComponent]

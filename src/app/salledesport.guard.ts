@@ -13,7 +13,7 @@ export const SalledesportGuard: CanActivateFn = (route: ActivatedRouteSnapshot, 
   if (authService.isAdmin()) {
     return true;
   } else {
-    router.navigate(['app-forbidden']);
+    router.navigate(['forbidden']);
     return false;
   }
 };
